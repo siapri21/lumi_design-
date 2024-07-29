@@ -1,20 +1,42 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Marmytho - Catalogue de Produits{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+<main class="container">
+    <div>
+        <h1 class="display-5 fw-bold mb-4">Catalogue lumi-design</h1>
+        <p class="fs-4">"Découvrez notre sélection de produits exceptionnels !"</p>
+    </div>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/ouatt/Desktop/lumi-design/src/Controller/HomeController.php</code></li>
-        <li>Your template at <code>C:/Users/ouatt/Desktop/lumi-design/templates/home/index.html.twig</code></li>
-    </ul>
-</div>
+    <div class="container mt-5">
+        <h2 class="mb-4">Nos Produits</h2>
+        <div class="row">
+            {% for product in products %}
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        {% if product.image %}
+                            <img src="{{ (product.image) }}" class="card-img-top" alt="{{ product.name }}">
+                        {% else %}
+                            {# <img src="{{ asset('img/placeholder.jpg') }}" class="card-img-top" alt="Image placeholder"> #}
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ product.name }}</h5>
+                            <p class="card-text">{{ product.description|length > 100 ? product.description|slice(0, 100) ~ '...' : product.description }}</p>
+                            {# <a href="{{ path('product_show', {'slug': product.slug}) }}" class="btn btn-primary">Voir le produit</a> #}
+                        </div>
+                        <div class="card-footer text-muted">
+                            Prix: {{ product.price|number_format(2, ',', ' ') }} €
+                            {% if product.stock > 0 %}
+                                | En stock: {{ product.stock }}
+                            {% else %}
+                                | Rupture de stock
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</main>
 {% endblock %}

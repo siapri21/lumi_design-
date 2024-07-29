@@ -3,9 +3,11 @@
 namespace App\Entity;
 
 use App\Repository\ProductRepository;
+use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
+#[ORM\HasLifecycleCallbacks]
 class Product
 {
     #[ORM\Id]
@@ -28,7 +30,7 @@ class Product
     #[ORM\Column(length: 255)]
     private ?string $price = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(type: "integer", length: 255)]
     private ?string $stock = null;
 
     #[ORM\Column]
@@ -39,6 +41,18 @@ class Product
 
     #[ORM\ManyToOne(inversedBy: 'products')]
     private ?Category $category = null;
+
+    #[ORM\PrePersist]
+    #[ORM\PreUpdate]
+    public function updateTimestamps(): void
+    {
+        $this->updateAt = new DateTimeImmutable();
+        if ($this->createAt=== null) {
+            $this->createAt = new DateTimeImmutable();
+        }
+    }
+
+        // la meme chose pour  update
 
     public function getId(): ?int
     {
@@ -152,4 +166,6 @@ class Product
 
         return $this;
     }
+
+   
 }
