@@ -2,6 +2,7 @@
 
 namespace App\Controller\front;
 
+use App\Entity\Product;
 use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -27,4 +28,14 @@ class HomeController extends AbstractController
             'pagination' => $pagination,
         ]);
     }
+
+    #[Route('/product/{slug}', name: 'product_details', methods:['GET'])]
+      
+    public function productDetails(Product $product): Response
+    {
+        return $this->render('front/home/product_details.html.twig', [
+            'product' => $product,
+        ]);
+    }
+
 }
