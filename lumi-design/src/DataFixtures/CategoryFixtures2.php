@@ -7,7 +7,7 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 
-class CategoryFixtures extends Fixture
+class CategoryFixtures2 extends Fixture
 {
     private $faker;
  

@@ -8,7 +8,6 @@
     <table class="table">
         <thead>
             <tr>
-               
                 <th>Name</th>
                 <th>Slug</th>
                 <th>Description</th>
@@ -19,9 +18,8 @@
             </tr>
         </thead>
         <tbody>
-        {% for product in products %}
+        {% for product in pagination %}
             <tr>
-                
                 <td>{{ product.name }}</td>
                 <td>{{ product.slug }}</td>
                 <td>{{ product.description }}</td>
@@ -29,17 +27,22 @@
                 <td>{{ product.price }}</td>
                 <td>{{ product.stock }}</td>
                 <td>
-                   <a href="{{ path('admin_product_show', {'id': product.id}) }}" class="btn btn-primary" >show</a>
-                   <a href="{{ path('admin_product_edit', {'id': product.id}) }}"  class="btn btn-danger">edit</a>
+                   <a href="{{ path('admin_product_show', {'id': product.id}) }}" class="btn btn-primary">show</a>
+                   <a href="{{ path('admin_product_edit', {'id': product.id}) }}" class="btn btn-danger">edit</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="10">no records found</td>
+                <td colspan="7">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
+
+    {# Affichage de la pagination #}
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div>
 
     <a href="{{ path('admin_product_new') }}">Create new</a>
 {% endblock %}

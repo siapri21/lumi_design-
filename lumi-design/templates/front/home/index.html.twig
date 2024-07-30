@@ -12,18 +12,18 @@
     <div class="container mt-5">
         <h2 class="mb-4">Nos Produits</h2>
         <div class="row">
-            {% for product in products %}
+            {% for product in pagination %}
                 <div class="col-md-4">
                     <div class="card mb-4">
                         {% if product.image %}
-                            <img src="{{ (product.image) }}" class="card-img-top" alt="{{ product.name }}">
+                            <img src="{{ product.image}}" class="card-img-top" alt="{{ product.name }}">
                         {% else %}
                             {# <img src="{{ asset('img/placeholder.jpg') }}" class="card-img-top" alt="Image placeholder"> #}
                         {% endif %}
                         <div class="card-body">
                             <h5 class="card-title">{{ product.name }}</h5>
                             <p class="card-text">{{ product.description|length > 100 ? product.description|slice(0, 100) ~ '...' : product.description }}</p>
-                            {# <a href="{{ path('product_show', {'slug': product.slug}) }}" class="btn btn-primary">Voir le produit</a> #}
+                            <a href="{{ path('admin_product_show', {'slug': product.slug}) }}" class="btn btn-primary">Voir le produit</a>
                         </div>
                         <div class="card-footer text-muted">
                             Prix: {{ product.price|number_format(2, ',', ' ') }} €
@@ -36,6 +36,11 @@
                     </div>
                 </div>
             {% endfor %}
+        </div>
+
+        {# Affichage de la pagination #}
+        <div class="navigation d-flex justify-content-center mt-4">
+            {{ knp_pagination_render(pagination) }}
         </div>
     </div>
 </main>

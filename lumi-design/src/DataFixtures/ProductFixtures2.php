@@ -10,7 +10,7 @@ use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
-class ProductFixtures extends Fixture implements DependentFixtureInterface
+class ProductFixtures2 extends Fixture implements DependentFixtureInterface
 {
     private $faker;
     private SluggerInterface $slugger;
@@ -46,6 +46,6 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
 
     public function getDependencies()
     {
-        return [CategoryFixtures::class];
+        return [CategoryFixtures2::class];
     }
 }
