@@ -31,8 +31,9 @@ class HomeController extends AbstractController
 
     #[Route('/product/{slug}', name: 'product_details', methods:['GET'])]
       
-    public function productDetails(Product $product): Response
+    public function productDetails(string $slug , ProductRepository $productRepository): Response
     {
+        $product = $productRepository->findOneBySomeField($slug);
         return $this->render('front/home/product_details.html.twig', [
             'product' => $product,
         ]);
