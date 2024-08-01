@@ -11,9 +11,9 @@ class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-       CategoryFactory :: createMany(10);
+       CategoryFactory :: createMany(5);
 
-       ProductFactory:: createMany(100, function() {
+       ProductFactory:: createMany(5, function() {
         return [
             'category' => CategoryFactory::random(),
         ];
