@@ -23,8 +23,8 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ product.name }}</h5>
                             <p class="card-text">{{ product.description|length > 100 ? product.description|slice(0, 100) ~ '...' : product.description }}</p>
-                            {# <a href="{{ path('admin_product_show', {'slug': product.slug}) }}" class="btn btn-primary">Voir le produit</a>
-                             #}
+                             <a href="{{ path('admin_product_show', {'slug': product.slug}) }}" class="btn btn-primary">Voir le produit</a>
+                             
                              <a href="{{ path('product_details', {'slug': product.slug}) }}" class="btn btn-primary">En savoir plus</a>
                         </div>
                         <div class="card-footer text-muted">
