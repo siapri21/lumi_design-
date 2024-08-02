@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -35,6 +36,27 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column]
     private bool $isVerified = false;
+
+    #[ORM\Column(length: 255)]
+    private ?string $lastName = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $Firstame = null;
+
+    #[ORM\Column(length: 10)]
+    private ?string $codePostale = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $ville = null;
+
+    #[ORM\Column(length: 20)]
+    private ?string $N°tel = null;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private ?\DateTimeInterface $createAT = null;
+
+    #[ORM\Column]
+    private ?bool $is_Active = null;
 
     public function getId(): ?int
     {
@@ -119,6 +141,90 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setVerified(bool $isVerified): static
     {
         $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    public function getLastName(): ?string
+    {
+        return $this->lastName;
+    }
+
+    public function setLastName(string $lastName): static
+    {
+        $this->lastName = $lastName;
+
+        return $this;
+    }
+
+    public function getFirstame(): ?string
+    {
+        return $this->Firstame;
+    }
+
+    public function setFirstame(string $Firstame): static
+    {
+        $this->Firstame = $Firstame;
+
+        return $this;
+    }
+
+    public function getCodePostale(): ?string
+    {
+        return $this->codePostale;
+    }
+
+    public function setCodePostale(string $codePostale): static
+    {
+        $this->codePostale = $codePostale;
+
+        return $this;
+    }
+
+    public function getVille(): ?string
+    {
+        return $this->ville;
+    }
+
+    public function setVille(string $ville): static
+    {
+        $this->ville = $ville;
+
+        return $this;
+    }
+
+    public function getN°tel(): ?string
+    {
+        return $this->N°tel;
+    }
+
+    public function setN°tel(string $N°tel): static
+    {
+        $this->N°tel = $N°tel;
+
+        return $this;
+    }
+
+    public function getCreateAT(): ?\DateTimeInterface
+    {
+        return $this->createAT;
+    }
+
+    public function setCreateAT(\DateTimeInterface $createAT): static
+    {
+        $this->createAT = $createAT;
+
+        return $this;
+    }
+
+    public function isActive(): ?bool
+    {
+        return $this->is_Active;
+    }
+
+    public function setActive(bool $is_Active): static
+    {
+        $this->is_Active = $is_Active;
 
         return $this;
     }
