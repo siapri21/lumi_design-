@@ -1,0 +1,52 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  
+  :root{
+    --marronTerreux:#8B4513;
+    --vertOlive:#68803f;
+    --rougeVif:#FF0000;
+    --jaunesolaire:#FFFF00;
+    --beige:#F5F5DC;
+    --bleuCiel:#87CEEB;
+  } 
+
+  
+  
+  /* catalogue */
+  h3{
+    font-size: 2rem;
+    text-align: center;
+  }
+
+.home{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: nowrap;
+    position: relative;
+    padding: 8vh;
+    width: 90%;
+    z-index: 1;
+  }
+  
+  .mages{
+    border-radius: 5px;
+    transform: rotate(50deg);
+    transition: transform 1s; 
+    width:200px;
+    box-shadow: 0 1px 3px rgba(12, 12, 15, 0.744), 0 1px 2px rgba(0, 0, 0, 0.822);
+    
+  }
+  .mages img{
+    width: 200px;
+    border-radius: 5px;
+  }
+  
+  .mages:hover{
+    transform: translateY(-15px);
+   }

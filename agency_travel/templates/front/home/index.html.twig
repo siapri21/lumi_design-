@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+<h1>bienvenue dans ames voyages</h1>
+
+
+
+    <h3>Nos catalogues de voyages</h3>
+      <section class="home">
+        <article class="box">
+          <figure class="mages" ><img src={{ asset('img/montagnade_1.png')}}   class="catalogues-images" alt="">
+            <div class="text">
+              <h3>Montagne</h3>
+            </div>
+          </figure>
+        </article>
+        
+        <article class="box">
+          <figure class="mages" ><img src={{ asset('img/romance_1.png') }}  class="catalogues-images" alt="">
+            <div class="text">
+              <h3>Escapade en amoureux</h3>
+            </div>
+          </figure>
+        </article>
+        
+        <article class="box">
+          <figure class="mages" ><img src={{ asset('img/villes_1.png') }}  class="catalogues-images"  alt="">
+            <div class="text">
+              <h3>Villes</h3>
+            </div>
+          </figure>
+        </article>
+        <article class="box">
+          <figure class="mages" ><img src={{ asset('img/deserh_1.png')}} 
+            <div class="text">
+              <h3>Safari</h3>
+            </div>
+          </figure>
+        </article>
+        <article class="box">
+          <figure class="mages" ><img src= {{ asset('img/plages_1.png') }}    class="catalogues-images" alt="">
+            <div class="text">
+              <h3>plage</h3>
+            </div>
+          </figure>
+        </article>
+        
+      </section>
+
+{% endblock %}
